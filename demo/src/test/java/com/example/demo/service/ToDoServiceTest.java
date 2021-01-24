@@ -1,17 +1,24 @@
 package com.example.demo.service;
 
+import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertTrue;
+import static org.mockito.Mockito.times;
+import static org.mockito.Mockito.verify;
+import static org.mockito.Mockito.when;
+
+import java.util.ArrayList;
+import java.util.List;
+
 import com.example.demo.model.ToDo;
 import com.example.demo.repository.ToDoRepository;
 import com.example.demo.services.ToDoServiceImplementation;
-import org.aspectj.lang.annotation.Before;
-import org.junit.jupiter.api.Test;
+import org.junit.Before;
+import org.junit.Test;
+import org.junit.runner.RunWith;
 import org.mockito.InjectMocks;
 import org.mockito.Mock;
 import org.mockito.MockitoAnnotations;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
-
-import java.util.ArrayList;
-import java.util.List;
 
 @RunWith(SpringJUnit4ClassRunner.class)
 public class ToDoServiceTest {
@@ -46,7 +53,7 @@ public class ToDoServiceTest {
         ToDo result = toDoService.getToDoById(1);
         assertEquals(1, result.getId());
         assertEquals("Todo Sample 1", result.getText());
-        assertEquals(true, result.isCompleted());
+        assertTrue(result.isCompleted());
     }
 
     @Test
@@ -56,7 +63,7 @@ public class ToDoServiceTest {
         ToDo result = toDoService.saveToDo(toDo);
         assertEquals(8, result.getId());
         assertEquals("Todo Sample 8", result.getText());
-        assertEquals(true, result.isCompleted());
+        assertTrue(result.isCompleted());
     }
 
     @Test
