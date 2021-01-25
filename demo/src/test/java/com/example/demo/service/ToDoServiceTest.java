@@ -1,14 +1,5 @@
 package com.example.demo.service;
 
-import static org.junit.Assert.assertEquals;
-import static org.junit.Assert.assertTrue;
-import static org.mockito.Mockito.times;
-import static org.mockito.Mockito.verify;
-import static org.mockito.Mockito.when;
-
-import java.util.ArrayList;
-import java.util.List;
-
 import com.example.demo.model.ToDo;
 import com.example.demo.repository.ToDoRepository;
 import com.example.demo.services.ToDoServiceImplementation;
@@ -19,6 +10,15 @@ import org.mockito.InjectMocks;
 import org.mockito.Mock;
 import org.mockito.MockitoAnnotations;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
+
+import java.util.ArrayList;
+import java.util.List;
+
+import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertTrue;
+import static org.mockito.Mockito.times;
+import static org.mockito.Mockito.verify;
+import static org.mockito.Mockito.when;
 
 @RunWith(SpringJUnit4ClassRunner.class)
 public class ToDoServiceTest {
@@ -44,16 +44,6 @@ public class ToDoServiceTest {
 
         List<ToDo> result = toDoService.getAllToDo();
         assertEquals(3, result.size());
-    }
-
-    @Test
-    public void testGetToDoById(){
-        ToDo toDo = new ToDo(1,"Todo Sample 1",true);
-        when(toDoRepository.findOne(1L)).thenReturn(toDo);
-        ToDo result = toDoService.getToDoById(1);
-        assertEquals(1, result.getId());
-        assertEquals("Todo Sample 1", result.getText());
-        assertTrue(result.isCompleted());
     }
 
     @Test
